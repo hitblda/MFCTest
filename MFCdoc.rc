@@ -1,0 +1,384 @@
+// Microsoft Visual C++ generated resource script.
+//
+#pragma code_page(65001)
+
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(简体，中国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+129                     BITMAP                  "bmp129.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_HELP_MENU MENU
+BEGIN
+    MENUITEM "关于 MFCdoc(&A)...",            57664
+END
+
+119 MENU
+BEGIN
+    POPUP "编辑"
+    BEGIN
+        MENUITEM "剪切(&T)\tCtrl+X",              57635
+        MENUITEM "复制(&C)\tCtrl+C",              57634
+        MENUITEM "粘贴(&P)\tCtrl+V",              57637
+    END
+END
+
+200 MENU
+BEGIN
+    MENUITEM "Office 2007 (蓝色样式)(&B)",      215
+    MENUITEM "Office 2007 (黑色样式)(&L)",      216
+    MENUITEM "Office 2007 (银色样式)(&S)",      217
+    MENUITEM "Office 2007 (水绿色样式)(&A)",     218
+    MENUITEM "Windows 7(&D)",               219
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+100 DIALOGEX 0, 0, 170, 62
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 MFCdoc"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            128,-1,14,14,21,20
+    LTEXT           "MFCdoc，版本 1.0",-1,42,14,114,8,SS_NOPREFIX
+    LTEXT           "版权所有 (C) 2020",-1,42,26,114,8
+    DEFPUSHBUTTON   "确定",1,113,41,50,14,WS_GROUP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+128 ACCELERATORS
+BEGIN
+    "N",            57600,                  VIRTKEY, CONTROL
+    "O",            57601,                  VIRTKEY, CONTROL
+    "S",            57603,                  VIRTKEY, CONTROL
+    "Z",            57643,                  VIRTKEY, CONTROL
+    "X",            57635,                  VIRTKEY, CONTROL
+    "C",            57634,                  VIRTKEY, CONTROL
+    "V",            57637,                  VIRTKEY, CONTROL
+    VK_BACK,        57643,                  VIRTKEY, ALT
+    VK_DELETE,      57635,                  VIRTKEY, SHIFT
+    VK_INSERT,      57634,                  VIRTKEY, CONTROL
+    VK_INSERT,      57637,                  VIRTKEY, SHIFT
+    VK_F6,          57680,                  VIRTKEY 
+    VK_F6,          57681,                  VIRTKEY, SHIFT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+128                     ICON                    "ico128.ico"
+
+130                     ICON                    "ico130.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+1 VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404B0"
+        BEGIN
+            VALUE "CompanyName", "TODO:  <公司名>"
+            VALUE "FileDescription", "MFCdoc"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "MFCdoc.exe"
+            VALUE "LegalCopyright", "TODO:  (C) <公司名>。  保留所有权利。"
+            VALUE "OriginalFilename", "MFCdoc.exe"
+            VALUE "ProductName", "TODO:  <产品名>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+129 TOOLBAR 16, 15
+BEGIN
+    BUTTON      57600
+    BUTTON      57601
+    BUTTON      57603
+    SEPARATOR
+    BUTTON      57635
+    BUTTON      57634
+    BUTTON      57637
+    SEPARATOR
+    BUTTON      57607
+    BUTTON      57664
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    122                     "窗格 1"
+    123                     "窗格 2"
+    124                     "标准"
+    125                     "自定义..."
+END
+
+STRINGTABLE
+BEGIN
+    128                     "MFCdoc\n\nMFCdoc\n\n\nMFCdoc.Document\nMFCdoc.Document"
+END
+
+STRINGTABLE
+BEGIN
+    306                     "编辑"
+END
+
+STRINGTABLE
+BEGIN
+    57344                   "MFCdoc"
+    57345                   "就绪"
+END
+
+STRINGTABLE
+BEGIN
+    57600                   "创建新文档\n新建"
+    57601                   "打开现有文档\n打开"
+    57602                   "关闭活动文档\n关闭"
+    57603                   "保存活动文档\n保存"
+    57604                   "用新名称保存活动文档\n另存为"
+END
+
+STRINGTABLE
+BEGIN
+    57616                   "打开此文档"
+    57617                   "打开此文档"
+    57618                   "打开此文档"
+    57619                   "打开此文档"
+    57620                   "打开此文档"
+    57621                   "打开此文档"
+    57622                   "打开此文档"
+    57623                   "打开此文档"
+    57624                   "打开此文档"
+    57625                   "打开此文档"
+    57626                   "打开此文档"
+    57627                   "打开此文档"
+    57628                   "打开此文档"
+    57629                   "打开此文档"
+    57630                   "打开此文档"
+    57631                   "打开此文档"
+END
+
+STRINGTABLE
+BEGIN
+    57632                   "清除所选内容\n清除"
+    57633                   "清除全部内容\n全部清除"
+    57634                   "复制所选内容，将其放入剪贴板\n复制"
+    57635                   "剪切所选内容，将其放入剪贴板\n剪切"
+    57636                   "查找指定的文本\n查找"
+    57637                   "插入剪贴板内容\n粘贴"
+    57640                   "重复上一操作\n重复"
+    57641                   "用其他文本替换特定的文本\n替换"
+    57642                   "选定整个文档\n全选"
+    57643                   "撤消上一操作\n撤消"
+    57644                   "重做上次撤消的操作\n重做"
+END
+
+STRINGTABLE
+BEGIN
+    57653                   "将活动窗口拆分为多个窗格\n拆分"
+END
+
+STRINGTABLE
+BEGIN
+    57664                   "显示程序信息、版本号和版权信息\n关于"
+    57665                   "退出应用程序；提示保存文档\n退出"
+END
+
+STRINGTABLE
+BEGIN
+    57680                   "切换到下一个窗格\n下一窗格"
+    57681                   "切换回上一个窗格\n上一窗格"
+END
+
+STRINGTABLE
+BEGIN
+    59136                   "EXT"
+    59137                   "CAP"
+    59138                   "NUM"
+    59139                   "SCRL"
+    59140                   "OVR"
+    59141                   "REC"
+END
+
+STRINGTABLE
+BEGIN
+    59393                   "显示或隐藏状态栏\n切换状态栏"
+END
+
+STRINGTABLE
+BEGIN
+    61184                   "更改窗口大小"
+    61185                   "更改窗口位置"
+    61186                   "将窗口缩小成图标"
+    61187                   "将窗口放大到最大尺寸"
+    61188                   "切换到下一个文档窗口"
+    61189                   "切换到上一个文档窗口"
+    61190                   "关闭活动窗口并提示保存文档"
+END
+
+STRINGTABLE
+BEGIN
+    61202                   "将窗口恢复到正常大小"
+    61203                   "激活任务列表"
+END
+
+#endif    // 中文(简体，中国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// 英语(美国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// RT_MANIFEST
+//
+
+1 RT_MANIFEST 
+BEGIN
+    0xbbef, 0x3cbf, 0x783f, 0x6c6d, 0x7620, 0x7265, 0x6973, 0x6e6f, 0x223d, 
+    0x2e31, 0x2230, 0x6520, 0x636e, 0x646f, 0x6e69, 0x3d67, 0x5522, 0x4654, 
+    0x382d, 0x2022, 0x7473, 0x6e61, 0x6164, 0x6f6c, 0x656e, 0x223d, 0x6579, 
+    0x2273, 0x3e3f, 0x0a0d, 0x613c, 0x7373, 0x6d65, 0x6c62, 0x2079, 0x6d78, 
+    0x6e6c, 0x3d73, 0x7522, 0x6e72, 0x733a, 0x6863, 0x6d65, 0x7361, 0x6d2d, 
+    0x6369, 0x6f72, 0x6f73, 0x7466, 0x632d, 0x6d6f, 0x613a, 0x6d73, 0x762e, 
+    0x2231, 0x6d20, 0x6e61, 0x6669, 0x7365, 0x5674, 0x7265, 0x6973, 0x6e6f, 
+    0x223d, 0x2e31, 0x2230, 0x3c3e, 0x7274, 0x7375, 0x4974, 0x666e, 0x206f, 
+    0x6d78, 0x6e6c, 0x3d73, 0x7522, 0x6e72, 0x733a, 0x6863, 0x6d65, 0x7361, 
+    0x6d2d, 0x6369, 0x6f72, 0x6f73, 0x7466, 0x632d, 0x6d6f, 0x613a, 0x6d73, 
+    0x762e, 0x2233, 0x3c3e, 0x6573, 0x7563, 0x6972, 0x7974, 0x3c3e, 0x6572, 
+    0x7571, 0x7365, 0x6574, 0x5064, 0x6972, 0x6976, 0x656c, 0x6567, 0x3e73, 
+    0x723c, 0x7165, 0x6575, 0x7473, 0x6465, 0x7845, 0x6365, 0x7475, 0x6f69, 
+    0x4c6e, 0x7665, 0x6c65, 0x6c20, 0x7665, 0x6c65, 0x223d, 0x7361, 0x6e49, 
+    0x6f76, 0x656b, 0x2272, 0x7520, 0x4169, 0x6363, 0x7365, 0x3d73, 0x6622, 
+    0x6c61, 0x6573, 0x3e22, 0x2f3c, 0x6572, 0x7571, 0x7365, 0x6574, 0x4564, 
+    0x6578, 0x7563, 0x6974, 0x6e6f, 0x654c, 0x6576, 0x3e6c, 0x2f3c, 0x6572, 
+    0x7571, 0x7365, 0x6574, 0x5064, 0x6972, 0x6976, 0x656c, 0x6567, 0x3e73, 
+    0x2f3c, 0x6573, 0x7563, 0x6972, 0x7974, 0x3c3e, 0x742f, 0x7572, 0x7473, 
+    0x6e49, 0x6f66, 0x3c3e, 0x7061, 0x6c70, 0x6369, 0x7461, 0x6f69, 0x206e, 
+    0x6d78, 0x6e6c, 0x3d73, 0x7522, 0x6e72, 0x733a, 0x6863, 0x6d65, 0x7361, 
+    0x6d2d, 0x6369, 0x6f72, 0x6f73, 0x7466, 0x632d, 0x6d6f, 0x613a, 0x6d73, 
+    0x762e, 0x2233, 0x3c3e, 0x6977, 0x646e, 0x776f, 0x5373, 0x7465, 0x6974, 
+    0x676e, 0x3e73, 0x643c, 0x6970, 0x7741, 0x7261, 0x2065, 0x6d78, 0x6e6c, 
+    0x3d73, 0x6822, 0x7474, 0x3a70, 0x2f2f, 0x6373, 0x6568, 0x616d, 0x2e73, 
+    0x696d, 0x7263, 0x736f, 0x666f, 0x2e74, 0x6f63, 0x2f6d, 0x4d53, 0x2f49, 
+    0x3032, 0x3530, 0x572f, 0x6e69, 0x6f64, 0x7377, 0x6553, 0x7474, 0x6e69, 
+    0x7367, 0x3e22, 0x7274, 0x6575, 0x2f3c, 0x7064, 0x4169, 0x6177, 0x6572, 
+    0x3c3e, 0x772f, 0x6e69, 0x6f64, 0x7377, 0x6553, 0x7474, 0x6e69, 0x7367, 
+    0x3c3e, 0x612f, 0x7070, 0x696c, 0x6163, 0x6974, 0x6e6f, 0x3c3e, 0x612f, 
+    0x7373, 0x6d65, 0x6c62, 0x3e79
+END
+
+#endif    // 英语(美国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
