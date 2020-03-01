@@ -43,6 +43,7 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
+
 END_MESSAGE_MAP()
 
 
@@ -65,6 +66,11 @@ BEGIN_MESSAGE_MAP(CMFCTestDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_COMMAND(ID_APP_EXIT, &CMFCTestDlg::OnAppExit)
+	ON_WM_DROPFILES()
+	ON_COMMAND(ID_FILE_NEW, &CMFCTestDlg::OnFileNew)
+	ON_COMMAND(57664, &CMFCTestDlg::OnAppAbout)
+	ON_WM_SIZE()
 END_MESSAGE_MAP()
 
 
@@ -153,3 +159,90 @@ HCURSOR CMFCTestDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+void CMFCTestDlg::OnOK()
+{
+	TRACE(L" 你按下了回车键！"); 
+	MessageBox(L"这是一个确定 取消的消息框！", L"标题", MB_OKCANCEL);
+}
+
+
+void CMFCTestDlg::OnCancel()
+{
+	if (MessageBox(L"警告：确定将退出！", L"警告", MB_ICONEXCLAMATION | MB_OKCANCEL) == IDCANCEL)
+		return;
+	CDialogEx::OnCancel();
+
+}
+
+
+void CMFCTestDlg::OnAppExit()
+{
+	// TODO: 在此添加命令处理程序代码
+	EndDialog(IDCANCEL);
+}
+
+//鼠标将文本文件拖动到编辑区时 
+//文档编辑区的属性Accept File选项要设置为True
+//选择消息为WM_DropFiles
+void CMFCTestDlg::OnDropFiles(HDROP hDropInfo)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	TCHAR sFile[256];
+#if 0
+	int nCount = DragQueryFile(hDropInfo, -1, NULL, 0);//第二个参数-1表示求拖了几个文件
+	//当依次拖了几个文件时
+	int i = 0;
+	while (i < nCount) 
+	{
+		DragQueryFile(hDropInfo, i, sFile, _countof(sFile)); //依次获取文件名到sFile
+		++i;
+	}
+#endif
+
+	//不管拖几个，只打开第一个
+	DragQueryFile(hDropInfo, 0, sFile, _countof(sFile)); //依次获取文件名到sFile
+	CFile file;
+	//打开的文件编码非UNICODE 而界面是UNICODE 
+
+
+
+	CDialogEx::OnDropFiles(hDropInfo);
+}
+
+
+void CMFCTestDlg::OnFileNew()
+{
+	MessageBox(L"你要新建什么呢？");
+	// TODO: 在此添加命令处理程序代码
+}
+
+
+//关于按键 About消息 触发的事件
+void CMFCTestDlg::OnAppAbout()
+{
+	// TODO: 在此添加命令处理程序代码
+	CAboutDlg dlg;
+	dlg.DoModal();
+}
+
+
+//窗口大小改变时
+void CMFCTestDlg::OnSize(UINT nType, int cx, int cy)
+{
+	CDialogEx::OnSize(nType, cx, cy);
+	CWnd* p = GetDlgItem(IDC_EDIT1);
+	if (p)
+	{
+		TRACE(L"窗口大小改变了 ");
+//		TRACE(L"窗口大小改变了 长：%L  宽:%L",cx,cy);
+
+		CRect rect;
+		GetClientRect(rect);//窗口是以客户区为坐标系
+		p->MoveWindow(rect);
+
+	}
+
+
+	// TODO: 在此处添加消息处理程序代码
+}
