@@ -13,6 +13,17 @@
 #define new DEBUG_NEW
 #endif
 
+LPCTSTR CMFCTestDlg::mWeek[] =
+{
+	_T("星期日"),
+	_T("星期一"),
+	_T("星期二"),
+	_T("星期三"),
+	_T("星期四"),
+	_T("星期五"),
+	_T("星期六"),
+	NULL
+};
 
 // 用于应用程序“关于”菜单项的 CAboutDlg 对话框
 
@@ -161,11 +172,11 @@ BOOL CMFCTestDlg::OnInitDialog()
 */
 	//HWND hWnd = GetDlgItem(this, IDC_LIST2);
 //	pList->InsertColumn(0, _T("第五列"), 0, 60);
-	pList->InsertColumn(0, _T("修改日期"), 0, 120);
-	pList->InsertColumn(0, _T("大小"), 0, 60);
-	pList->InsertColumn(0, _T("类型"), 0, 120);
-	pList->InsertColumn(0, _T("文件名"), 0, 240);
-//	pList->SetTextBkColor(RGB(125, 122, 125));
+	pList->InsertColumn(1, _T("文件名"), 0, 200);//左对齐
+	pList->InsertColumn(2, _T("类型"), 0, 80);
+	pList->InsertColumn(3, _T("大小"), 0, 60);
+	pList->InsertColumn(4, _T("修改日期"), 1, 230); //右对齐
+	pList->SetTextBkColor(RGB(255, 255, 255));
 	
 #if 0
 
@@ -688,16 +699,22 @@ void CMFCTestDlg::OnBnClickedOk()
 	CListCtrl* pList = (CListCtrl*)GetDlgItem(IDC_LIST2);
 	pList->DeleteAllItems();//否则会 点击一次，显示的效果累加显示一次
 	//struct _finddata_t c_file;  //_finddata_t可以根据机器是32位还是64位而定 
-	struct _wfinddata_t c_file;  //宽字符串
+	//struct _wfinddata_t c_file;  //宽字符串
+	WIN32_FIND_DATA c_file;  //MFC 中的搜索结构体
 
 	CString str;
 	CString szAddr;
 	GetDlgItemText(IDC_ADDR, szAddr); //获取控件的输入，作为显示的路径
 
-	intptr_t hFile = -1;
+	//intptr_t hFile = -1; //WinAPI
+	HANDLE hFile ; //采用MFC 
 	int i = 0;
+
+
+
 	//if ((hFile = _findfirst("C:\\*.*", &c_file)) == -1L)  //获得的是 窄字符串
-	if ( (hFile = _wfindfirst(szAddr+ L"\\*.*", &c_file)) == -1L)
+	//if ( (hFile = _wfindfirst(szAddr+ L"\\*.*", &c_file)) == -1L) //WInAPI
+	if ( (hFile = FindFirstFile(szAddr+ L"\\*.*", &c_file)) == INVALID_HANDLE_VALUE)
 		//查找C盘下所有的文件 ;但只是本层目录下
 	{
 		MessageBox(L"No *.* fiels in current directroy!");
@@ -709,31 +726,54 @@ void CMFCTestDlg::OnBnClickedOk()
 //		文件属性里面删除属性  c_file.attrib &= ~_A_RDONLY;
 
 		
-		if (!(c_file.attrib & _A_HIDDEN))
+		if (!(IsHidden(c_file)))
 		{
 			//窄字符串转宽字符串
 			//USES_CONVERSION;
 			//pList->InsertItem(i, A2T(c_file.name), IDC_LIST2);
-			pList->InsertItem(i, (c_file.name), IDC_LIST2);
-			if (_A_SUBDIR & c_file.attrib) //是文件夹
+			pList->InsertItem(i, (c_file.cFileName), IDC_LIST2);
+			if (FILE_ATTRIBUTE_DIRECTORY & c_file.dwFileAttributes) //是文件夹
 			{
 				pList->SetItemText(i, 1, L"文件夹");
 			}
 			else
 			{
-				str = c_file.name;
+				str = c_file.cFileName;
 				int n = str.ReverseFind(_T('.')); //逆向查找直到.为止
 				if (n > 0)
 				{
-					pList->SetItemText(i, 1,str.Mid(n+1)+ L"文件"); //Mid(n+1)是不显示.
+					pList->SetItemText(i, 1, str.Mid(n + 1) + L"文件"); //Mid(n+1)是不显示.
 				}
-				str.Format(L"%dK", (c_file.size)/1024);
-				pList->SetItemText(i, 2, str);
-				COleDateTime time(c_file.time_write);
-				str.Format(L"%d年%d月%d日", time.GetYear(),time.GetMonth(),time.GetDay());
-				pList->SetItemText(i, 3, str);
 
-			}	
+				//INT mSize,msL,msH;
+				//mSize = (c_file.nFileSizeLow) / 1024;
+				//if( (mSize >= 1000)&&(mSize<1000000))
+				//{
+				//	msL = mSize % 1024;
+				//	mSize /= 1024;
+				//	str.Format(L"%d,%dK",mSize, msL);
+				//}
+				//else if (mSize > 1000000)
+				//{
+				//	msL = mSize % 1024;
+				//	mSize = mSize / 1024;
+				//	msH = mSize % 1024;
+				//	mSize /= 1024;
+
+				//	str.Format(L"%d,%d,%dK", mSize, msH, msL);
+				//}
+				//else if (mSize < 1000)
+				//{
+				//	str.Format(L"%dK",mSize);
+				//}
+				str.Format(L"%dK", (c_file.nFileSizeLow) / 1024);
+				pList->SetItemText(i, 2, str);
+			}
+			COleDateTime time(c_file.ftLastWriteTime);
+			str.Format(L"%d年%d月%d日%s%d分:%d秒", time.GetYear(), time.GetMonth(), time.GetDay(), 
+				mWeek[time.GetDayOfWeek()-1],time.GetMinute(),time.GetSecond());
+			pList->SetItemText(i, 3, str);
+
 			i++;
 		}
 
@@ -746,7 +786,7 @@ void CMFCTestDlg::OnBnClickedOk()
 		//ctime_s(buffer, _countof(buffer), &c_file.time_write);
 		//sprintf_s(s,sizeof(s),"%-12s %.24s %91d\n", c_file.name, buffer, c_file.size);
 
-	} while (_wfindnext(hFile, &c_file) == 0);
-	_findclose(hFile);
+	} while (FindNextFile(hFile, &c_file));
+	FindClose(hFile);
 	
 }

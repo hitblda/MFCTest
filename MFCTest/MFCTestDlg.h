@@ -9,6 +9,19 @@
 // CMFCTestDlg 对话框
 class CMFCTestDlg : public CDialogEx
 {
+	inline static BOOL IsHidden(const WIN32_FIND_DATA& c_file)
+	{
+		if (c_file.dwFileAttributes & FILE_ATTRIBUTE_HIDDEN)
+			return TRUE;
+		if (!_tcscmp(c_file.cFileName, L"."))
+			return TRUE;
+		if (!_tcscmp(c_file.cFileName, L".."))
+			return TRUE;
+
+		return false;
+	}
+
+	static LPCTSTR  mWeek[];
 // 构造
 public:
 	CMFCTestDlg(CWnd* pParent = nullptr);	// 标准构造函数
