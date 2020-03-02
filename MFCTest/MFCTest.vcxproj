@@ -183,6 +183,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CPopDlg.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="MFCTest.h" />
     <ClInclude Include="MFCTestDlg.h" />
@@ -191,6 +192,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CPopDlg.cpp" />
     <ClCompile Include="MFCTest.cpp" />
     <ClCompile Include="MFCTestDlg.cpp" />
     <ClCompile Include="pch.cpp">

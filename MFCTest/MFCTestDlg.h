@@ -3,6 +3,7 @@
 //
 
 #pragma once
+#include "CPopDlg.h"
 
 
 // CMFCTestDlg 对话框
@@ -40,4 +41,29 @@ public:
 	afx_msg void OnFileNew();
 	afx_msg void OnAppAbout();
 	afx_msg void OnSize(UINT nType, int cx, int cy);
+	afx_msg void OnEditUndo();
+	afx_msg void OnEditCut();
+	afx_msg void OnEditCopy();
+	afx_msg void OnEditPaste();
+	afx_msg void OnEditClear();
+	afx_msg void OnEditFind();
+	afx_msg void OnEditReplace();
+	afx_msg void OnEditSelectAll();
+	afx_msg void OnEditTime();
+	afx_msg void OnFileOpen();
+	afx_msg void OnFileSave();
+	afx_msg void OnFileSaveAs();
+	void ReadAnsi(CFile& file);
+	void ReadUnicode(CFile& file);
+	void ReadUTF8(CFile& file);
+	afx_msg void OnViewList();
+	CPopDlg m_popDlg;
+	virtual void PreSubclassWindow();
+	UINT m_value1;
+	UINT m_value2;
+	UINT m_value3;
+	afx_msg void OnBnClickedSend();
+	afx_msg void OnEnChangevedit1();
+	afx_msg void OnEnChangevedit2();
+	afx_msg void OnBnClickedOk();
 };
